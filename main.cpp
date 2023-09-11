@@ -1,0 +1,15 @@
+#include <iostream>
+#include<stdio.h>
+#include<conio.h>
+int main ()
+{
+    int a,b,tong;
+    printf("Hello C Programming!");
+    printf("\nNhap a=");
+    scanf("%d",&a);
+    printf("\nNhap b=");
+    scanf("%d",&b);
+    tong=a+b;
+    printf("Ket qua =%d", tong);
+    getch();
+}

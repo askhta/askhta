@@ -1,0 +1,179 @@
+<head>
+    <script src="https://kit.fontawesome.com/ee754d075c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="java.js"></script>
+    <meta charset="utf-8">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần mềm hỗ trợ Quản lý sinh viên</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    </script>
+</head>
+<body>
+    <div >    
+        <div class="heading">
+            <div class="icon">
+                <img  style="width:100%;height:100%; width:70px; height:70px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Quoc_Huy_Viet_Nam_Chuan.png/885px-Quoc_Huy_Viet_Nam_Chuan.png">
+            </div>
+            <div class="tithead">
+                <p>BỘ GIÁO DỤC - MINISTRY OF EDUCATION</p>
+                <p>Phần mềm hỗ trợ Quản lý sinh viên</p>
+            </div>
+            <div class="head2">
+                <div class="choice">
+                    <div class="lm">
+                        <p class="w4"><i class="fa-solid fa-question"></i> Trợ giúp</p>
+                        <p class="w3"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</p>
+                        <p class="w2"><i class="fa-solid fa-lock"></i> quantrisinhvien</p>
+                        <p class="w1">Cục Kiểm tra sinh viên vi phạm ...</p>         
+                    </div>
+                    <div>
+                        <p class="date" id="currentDateTime"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="listmenu">
+        <div class="lc1"><p class="plc">Trang chủ</p></div>
+        <div class="lc2"><p class="plc">Giới thiệu</p></div>
+        <div class="lc3"><p class="plc">Đào tạo</p></div>
+        <div class="lc4"><p class="plc">Bảo đảm CL&KT</p></div>
+        <div class="lc5"><p class="plc">Khoa</p></div>
+        <div class="lc6"><p class="plc">Tuyển sinh</p></div>
+        <div class="lc7"><p class="plc">Sinh viên</p></div>
+    </div>
+    
+    <div class="main1">
+        <table>
+            <tr>
+                <td class="tdmain1">Tin tức</td>
+            </tr>
+            <tr>
+                <td class="tdmain1">Sự kiện</td>
+            </tr>
+            <tr>
+                <td class="tdmain1">Chương trình đào tạo</td>
+            </tr>
+            <tr>
+                <td class="tdmain1">Thông tin tuyển sinh</td>
+            </tr>
+            <tr>
+                <td class="tdmain1">Nghiên cứu</td>
+            </tr>
+            <tr>
+                <td class="tdmain1">Hợp tác quốc tế</td>
+            </tr>
+        </table>
+    </div>
+    <div class="main2">
+        <p><b>QUẢN LÝ SINH VIÊN</b></p>
+        <div class="but1">
+            <button class="add-button" onclick="nhapThongTinSinhVien()" ><span style="color:red;margin-right:2px;"><i class="fa-solid fa-plus"></i></span><span style="font-family: 'Times New Roman', Times, serif; color:rgb(23, 23, 73)"> Thêm</span></button>
+            <button class="fix-button" onClick="suaThongTinSinhVien()"><span style="color:red;margin-right:2px;"><i class="fa-solid fa-pen"></i></span><span style="font-family: 'Times New Roman', Times, serif; color:rgb(23, 23, 73)"> Sửa</span></button>
+            <button class="del-button" onClick="xoaThongTinSinhVien()"><span style="color:red;margin-right:2px;"><i class="fa-regular fa-trash-can"></i></span><span style="font-family: 'Times New Roman', Times, serif; color:rgb(23, 23, 73)"> Xóa</span></button>   
+        </div>
+        <div class="but2">
+            <input name="filter"  type="text-box" placeholder="Tìm tên đầy đủ">
+        </div>
+        <div class="scrollable-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left;" colspan="12">Kéo lên để xem theo nhóm</th>
+                    </tr>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Tên sinh viên</th>
+                        <th>Ngày sinh</th>
+                        <th>Mã Sinh Viên</th>
+                        <th>CCCD</th>
+                        <th>Giới tính</th>
+                        <th>Quê Quán</th>
+                        <th>SĐT</th>
+                        <th>Email</th>
+                        <th>Ngành học</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                </tr>
+                <tbody id="studentTableBody"></tbody>
+
+                    <!-- Existing student data will be dynamically added here -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="12">
+                            <div class="foot1">
+                                <div class="pagination">
+                                    <button class="arrow-btn" id="prev-btn"><i class="fa-solid fa-backward"></i></button>
+                                    <button class="arrow-btn" id="prev-btn"><i style="transform: scaleX(-1);" class="fa-solid fa-play"></i></i></button>
+                                    <button class="page-btn active" id="1">1</button>
+                                    <button class="page-btn" id="2">2</button>
+                                    <button class="arrow-btn" id="prev-btn" ><i class="fa-solid fa-play"></i></button>
+                                    <button class="arrow-btn" id="prev-btn"><i class="fa-solid fa-forward"></i></button>
+                                </div>
+                                <div class="pn">            
+                                    <select name="page" class="page">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    </select> 
+                                    <span class="wf">Bản ghi/Trang</span>
+                                </div>
+                            </div>    
+                            <div class="foot2">
+                                <span class="rotate"><i class="fa-solid fa-rotate-right"></i></span>
+                                <span class="f2">1-15/19 bản ghi</span>
+                            </div>
+               
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <script>
+        /*Ngày tháng*/
+        var currentDate = new Date();
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("currentDateTime").innerHTML ="ngày " + currentDate.toLocaleDateString('vi-VN', options);
+    </script>
+    <script>
+        /*Chuyển trang */
+        const pageButtons = document.querySelectorAll('.pagination .page-btn');
+        pageButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                pageButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+    <script>
+            function filterByName() {
+            var input = $(this).val().toUpperCase();
+            var table = $("#studentTableBody");
+
+            table.find("tr").each(function(index, row) {
+                var nameCol = $(row).find("td:eq(1)"); // Cột chứa tên sinh viên
+                var checkboxCol = $(row).find("td:eq(0)"); // Cột chứa checkbox
+
+                if (nameCol.text().toUpperCase().indexOf(input) > -1) {
+                    $(row).show();
+                    
+                    
+                } else {
+                    $(row).hide();
+                    
+                    
+                }
+            });
+        }
+        $("input[name='filter']").on("input", filterByName);
+    </script>
+    </body>

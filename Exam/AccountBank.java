@@ -14,65 +14,71 @@ public class AccountBank {
         this.balance = 0.0;
     }
 
-    // Getter and Setter for accountNumber
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    // Getter and Setter for accountHolderName
-    public String getAccountHolderName() {
-        return accountHolderName;
-    }
-
-    public void setAccountHolderName(String accountHolderName) {
-        this.accountHolderName = accountHolderName;
-    }
-
-    // Getter and Setter for balance
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    // Method to display account information
     public void displayAccountInfo() {
         System.out.println("Account Number: " + accountNumber);
         System.out.println("Account Holder Name: " + accountHolderName);
         System.out.println("Balance: " + balance);
     }
 
-    // Method to deposit money
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+    public void setAccountHolderName(String accountHolderNamer) {
+        this.accountNumber = accountHolderName;
+    }
+
     public void deposit(double amount) {
-        balance += amount;
-        System.out.println(amount + " deposited successfully.");
+        if (amount <= 0) {
+            System.out.println("Invalid deposit amount");
+            return;
+        }
+        this.balance += amount;
+        System.out.println("Transfer successful");
     }
 
-    // Method to withdraw money
     public void withdraw(double amount) {
-        if (balance >= amount) {
-            balance -= amount;
-            System.out.println(amount + " withdrawn successfully.");
-        } else {
-            System.out.println("Insufficient balance.");
+        if (amount <= 0){
+            System.out.println("Invalid amount.");
+            return;
         }
+        if(amount > this.balance){
+            System.out.println("Not enough money.");
+            return;
+        }
+        this.balance -= amount;
     }
 
-    // Method to transfer money to another account
     public void transfer(AccountBank destinationAccount, double amount) {
-        if (balance >= amount) {
-            balance -= amount;
-            destinationAccount.deposit(amount);
-            System.out.println(amount + " transferred successfully to account: " + destinationAccount.getAccountNumber());
-        } else {
-            System.out.println("Insufficient balance for transfer.");
+        if (amount <= 0) {
+            System.out.println("Invalid amount. ");
+            return;
         }
+        if(amount > this.balance){
+            System.out.println("Not enough money.");
+            return;
+        }
+        int destinationAccountIndex = -1;
+        for (int i = 0; i < Main.accountBanks.size(); i++){
+            AccountBank accountBank = Main.accountBanks.get(i);
+            if (accountBank.getAccountNumber().equals(accountNumber)){
+                destinationAccountIndex = i;
+            }
+        }
+        if(destinationAccountIndex == -1){
+            System.err.println("Account not found.");
+            return;
+        }
+        this.balance -= amount;
+        AccountBank destinationAccount = Main.accountBanks.get(destinationAccountIndex);
+        destinationAccount.setBalance(destinationAccount.getBalance() + amount);
+        System.out.println("Transfer successful");
     }
 }
 

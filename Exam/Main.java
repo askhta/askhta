@@ -1,67 +1,32 @@
 package Exam;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    public static ArrayList<AccountBank> accountBanks = new ArrayList<>();
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        // Create a new AccountBank object
-        AccountBank account = new AccountBank();
-
-        // Enter account information
-        System.out.println("Enter Account Number:");
+        Scanner scanner - new Scanner(System.in);
+        System.out.println("Welcome to EBank! ");
+        System.out.println("Please enter your account number: ");
         String accountNumber = scanner.nextLine();
-        account.setAccountNumber(accountNumber);
-
-        System.out.println("Enter Account Holder Name:");
+        System.out.println("Please enter your account holder name: ");
         String accountHolderName = scanner.nextLine();
-        account.setAccountHolderName(accountHolderName);
+        System.out.println("Please enter your account balance: ");
+        double balance = scanner.nextDouble();
+        scanner.nextLine();
+        AccountBank accountBank = new AccountBank();
+        accountBank.setAccountNumber(accountNumber);
+        accountBank.setAccountHolderName(accountHolderName);
+        System.out.println("Your account balance: ");
+        System.out.println("Your deposit method");
+        double depositAmount = 2000;
+        System.out.println("Deposit amount: " + depositAmount);
+        accountBank.deposit(depositAmount);
+        System.out.println("Your account balance after deposit: " + accountBank.getBalance());
 
-        System.out.println("Enter Initial Balance:");
-        double initialBalance = scanner.nextDouble();
-        account.setBalance(initialBalance);
 
-        // Display account information
-        System.out.println("Initial Account Information:");
-        account.displayAccountInfo();
-
-        // Perform transactions
-        System.out.println("\nEnter transactions:");
-        System.out.println("1. Deposit");
-        System.out.println("2. Withdraw");
-        System.out.println("3. Transfer");
-        int choice = scanner.nextInt();
-
-        switch (choice) {
-            case 1:
-                System.out.println("Enter deposit amount:");
-                double depositAmount = scanner.nextDouble();
-                account.deposit(depositAmount);
-                break;
-            case 2:
-                System.out.println("Enter withdrawal amount:");
-                double withdrawAmount = scanner.nextDouble();
-                account.withdraw(withdrawAmount);
-                break;
-            case 3:
-                System.out.println("Enter destination account number:");
-                String destinationAccountNumber = scanner.next();
-                AccountBank destinationAccount = new AccountBank();
-                destinationAccount.setAccountNumber(destinationAccountNumber);
-
-                System.out.println("Enter transfer amount:");
-                double transferAmount = scanner.nextDouble();
-                account.transfer(destinationAccount, transferAmount);
-                break;
-            default:
-                System.out.println("Invalid choice.");
-        }
-
-        // Display updated account information
-        System.out.println("\nUpdated Account Information:");
-        account.displayAccountInfo();
-
-        scanner.close();
     }
 }
+

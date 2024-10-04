@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slick Carousel Example</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <style>
+        .slick-prev, .slick-next {
+            font-size: 24px;
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: black;
+        }
+        .slick-prev {
+            left: 100px; /* Di chuyển nút trái vào trong 100px */
+        }
+        .slick-next {
+            right: 100px; /* Di chuyển nút phải vào trong 100px */
+        }
+        .one-time {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="one-time">
+    <div>
+        <h3>Slide 1</h3>
+        <p>Nội dung Slide 1</p>
+    </div>
+    <div>
+        <h3>Slide 2</h3>
+        <p>Nội dung Slide 2</p>
+    </div>
+    <div>
+        <h3>Slide 3</h3>
+        <p>Nội dung Slide 3</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.one-time').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+            nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>'
+        });
+    });
+</script>
+
+</body>
+</html>
